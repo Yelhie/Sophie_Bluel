@@ -1,31 +1,40 @@
+// Récupération les infos depuis l'API
 const reponse = await fetch("http://localhost:5678/api/works");
 const projets = await reponse.json();
 
 const sectionGallery = document.querySelector(".gallery");
 
-for (let i = 0; i < projets.length; i++) {
-  const article = projets[i];
+// Fonction qui génère l'affichage la page web
+async function listeProjets(projets) {
+  for (let i = 0; i < projets.length; i++) {
+    const article = projets[i];
 
-  const projetElement = document.createElement("figure");
-  const imageElement = document.createElement("img");
-  const titreElement = document.createElement("figcaption");
+    const projetElement = document.createElement("figure");
+    const imageElement = document.createElement("img");
+    const titreElement = document.createElement("figcaption");
 
-  imageElement.src = article.imageUrl;
-  titreElement.innerText = article.title;
+    imageElement.src = article.imageUrl;
+    titreElement.innerText = article.title;
 
-  sectionGallery.appendChild(projetElement);
-  projetElement.appendChild(imageElement);
-  projetElement.appendChild(titreElement);
+    sectionGallery.appendChild(projetElement);
+    projetElement.appendChild(imageElement);
+    projetElement.appendChild(titreElement);
+  }
 }
+
+// Premier affichage de la page
+listeProjets(projets);
 
 //Bouton + Filtre tous
 const boutonTous = document.querySelector(".btn-tous");
 
 boutonTous.addEventListener("click", function () {
-  const imagesTous = projets.filter(function (projets) {
-    return projets.categoryId >= 1;
+  const imagesTous = projets.filter(function () {
+    return true;
   });
-  console.log(imagesTous);
+
+  document.querySelector(".gallery").innerHTML = "";
+  listeProjets(imagesTous);
 });
 
 //Bouton + Filtre Objets
@@ -35,7 +44,8 @@ boutonObjets.addEventListener("click", function () {
   const imagesObjets = projets.filter(function (projets) {
     return projets.categoryId == 1;
   });
-  console.log(imagesObjets);
+  document.querySelector(".gallery").innerHTML = "";
+  listeProjets(imagesObjets);
 });
 
 //Bouton + Filtre Appartements
@@ -45,7 +55,8 @@ boutonAppartements.addEventListener("click", function () {
   const imagesAppartements = projets.filter(function (projets) {
     return projets.categoryId == 2;
   });
-  console.log(imagesAppartements);
+  document.querySelector(".gallery").innerHTML = "";
+  listeProjets(imagesAppartements);
 });
 
 //Bouton + Filtre Hotels & restaurants
@@ -57,5 +68,6 @@ boutonHotelsRestaurants.addEventListener("click", function () {
   const imagesHotelsRestaurants = projets.filter(function (projets) {
     return projets.categoryId == 3;
   });
-  console.log(imagesHotelsRestaurants);
+  document.querySelector(".gallery").innerHTML = "";
+  listeProjets(imagesHotelsRestaurants);
 });
