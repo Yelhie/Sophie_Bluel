@@ -1,73 +1,55 @@
-// Récupération les infos depuis l'API
-const reponse = await fetch("http://localhost:5678/api/works");
-const projets = await reponse.json();
+// Récupération des informations depuis l'API
+async function fetchProjets() {
+  const response = await fetch("http://localhost:5678/api/works");
+  return await response.json();
+}
 
-const sectionGallery = document.querySelector(".gallery");
+// Fonction qui génère l'affichage de la page web
+function afficherProjets(projets) {
+  const sectionGallery = document.querySelector(".gallery");
+  sectionGallery.innerHTML = "";
 
-// Fonction qui génère l'affichage la page web
-async function listeProjets(projets) {
-  for (let i = 0; i < projets.length; i++) {
-    const article = projets[i];
-
+  projets.forEach((projet) => {
     const projetElement = document.createElement("figure");
     const imageElement = document.createElement("img");
     const titreElement = document.createElement("figcaption");
 
-    imageElement.src = article.imageUrl;
-    titreElement.innerText = article.title;
+    imageElement.src = projet.imageUrl;
+    titreElement.innerText = projet.title;
 
-    sectionGallery.appendChild(projetElement);
     projetElement.appendChild(imageElement);
     projetElement.appendChild(titreElement);
-  }
+    sectionGallery.appendChild(projetElement);
+  });
 }
 
+// Fonction de filtrage générique
+function filtrerProjets(categoryId) {
+  const sectionGallery = document.querySelector(".gallery");
+  const projetsFiltres = projets.filter(
+    (projet) => projet.categoryId === categoryId
+  );
+  afficherProjets(projetsFiltres);
+}
+
+let projets = [];
+
 // Premier affichage de la page
-listeProjets(projets);
-
-//Bouton + Filtre tous
-const boutonTous = document.querySelector(".btn-tous");
-
-boutonTous.addEventListener("click", function () {
-  const imagesTous = projets.filter(function () {
-    return true;
-  });
-
-  document.querySelector(".gallery").innerHTML = "";
-  listeProjets(imagesTous);
+fetchProjets().then((data) => {
+  projets = data;
+  afficherProjets(projets);
 });
 
-//Bouton + Filtre Objets
-const boutonObjets = document.querySelector(".btn-objets");
-
-boutonObjets.addEventListener("click", function () {
-  const imagesObjets = projets.filter(function (projets) {
-    return projets.categoryId == 1;
-  });
-  document.querySelector(".gallery").innerHTML = "";
-  listeProjets(imagesObjets);
-});
-
-//Bouton + Filtre Appartements
-const boutonAppartements = document.querySelector(".btn-appartements");
-
-boutonAppartements.addEventListener("click", function () {
-  const imagesAppartements = projets.filter(function (projets) {
-    return projets.categoryId == 2;
-  });
-  document.querySelector(".gallery").innerHTML = "";
-  listeProjets(imagesAppartements);
-});
-
-//Bouton + Filtre Hotels & restaurants
-const boutonHotelsRestaurants = document.querySelector(
-  ".btn-hotelsrestaurants"
-);
-
-boutonHotelsRestaurants.addEventListener("click", function () {
-  const imagesHotelsRestaurants = projets.filter(function (projets) {
-    return projets.categoryId == 3;
-  });
-  document.querySelector(".gallery").innerHTML = "";
-  listeProjets(imagesHotelsRestaurants);
-});
+// Écouteurs d'événements pour les boutons de filtre
+document
+  .querySelector("#btn-tous")
+  .addEventListener("click", () => afficherProjets(projets));
+document
+  .querySelector("#btn-objets")
+  .addEventListener("click", () => filtrerProjets(1));
+document
+  .querySelector("#btn-appartements")
+  .addEventListener("click", () => filtrerProjets(2));
+document
+  .querySelector("#btn-hotelsrestaurants")
+  .addEventListener("click", () => filtrerProjets(3));
