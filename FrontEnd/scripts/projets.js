@@ -9,7 +9,7 @@ function afficherProjets(projets) {
   const sectionGallery = document.querySelector(".gallery");
   sectionGallery.innerHTML = "";
 
-  projets.forEach((projet) => {
+  projets.forEach(function (projet) {
     const projetElement = document.createElement("figure");
     const imageElement = document.createElement("img");
     const titreElement = document.createElement("figcaption");
@@ -25,31 +25,36 @@ function afficherProjets(projets) {
 
 // Fonction de filtrage générique
 function filtrerProjets(categoryId) {
-  const sectionGallery = document.querySelector(".gallery");
-  const projetsFiltres = projets.filter(
-    (projet) => projet.categoryId === categoryId
-  );
+  const projetsFiltres = projets.filter(function (projet) {
+    return projet.categoryId === categoryId;
+  });
   afficherProjets(projetsFiltres);
 }
 
 let projets = [];
 
 // Premier affichage de la page
-fetchProjets().then((data) => {
+fetchProjets().then(function (data) {
   projets = data;
   afficherProjets(projets);
 });
 
-// Écouteurs d'événements pour les boutons de filtre
-document
-  .querySelector("#btn-tous")
-  .addEventListener("click", () => afficherProjets(projets));
-document
-  .querySelector("#btn-objets")
-  .addEventListener("click", () => filtrerProjets(1));
-document
-  .querySelector("#btn-appartements")
-  .addEventListener("click", () => filtrerProjets(2));
-document
-  .querySelector("#btn-hotelsrestaurants")
-  .addEventListener("click", () => filtrerProjets(3));
+// Tableau pour stocker les écouteurs d'événements
+const boutonsFiltre = [
+  { id: "#btn-tous", categoryId: null },
+  { id: "#btn-objets", categoryId: 1 },
+  { id: "#btn-appartements", categoryId: 2 },
+  { id: "#btn-hotelsrestaurants", categoryId: 3 },
+];
+
+// Ajout des écouteurs d'événements à partir du tableau
+boutonsFiltre.forEach(function (bouton) {
+  const element = document.querySelector(bouton.id);
+  element.addEventListener("click", function () {
+    if (bouton.categoryId === null) {
+      afficherProjets(projets);
+    } else {
+      filtrerProjets(bouton.categoryId);
+    }
+  });
+});

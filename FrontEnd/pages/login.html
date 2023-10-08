@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
         rel="stylesheet">
-    <script type="module" src="scripts/projets.js"></script>
+    <script type="module" src="../scripts/login.js"></script>
     <meta name="description" content="">
     <link rel="stylesheet" href="../assets/style.css">
 </head>
@@ -19,7 +19,7 @@
         <h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
         <nav>
             <ul>
-                <li><a href="./index.html">projets</a></li>
+                <li><a href="../index.html">projets</a></li>
                 <li>contact</li>
                 <li id="login-nav">login</li>
                 <li><img src="../assets/icons/instagram.png" alt="Instagram"></li>
@@ -36,9 +36,10 @@
                 <input type="email" id="id_email" name="email">
                 <label for="id_password">Mot de passe</label>
                 <input type="password" id="id_password" name="password">
-                <button id="id_login" type="submit">Se connecter</button>
+                <button id="id_buttonlogin" type="submit">Se connecter</button>
+                <p id="messageerror"></p>
             </form>
-            <a class="forgotpassword" href="#">Mot de passe oublié</a>
+                      <a class="forgotpassword" href="#">Mot de passe oublié</a>
         </section>
     </main>
 
