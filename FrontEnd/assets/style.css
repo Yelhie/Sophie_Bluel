@@ -317,9 +317,12 @@ input[type="submit"] {
 	border-radius: 60px;
 }
 
-.forgotpassword {
+#messageerror {
 	display: flex;
 	flex-direction: column;
+	text-align: center;
+	color: red;
+	margin: 15px;
 }
 
 footer nav ul {
