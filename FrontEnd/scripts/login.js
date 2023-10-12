@@ -4,7 +4,7 @@ function logIn() {
   const loginForm = document.querySelector("form");
   const emailInput = document.getElementById("id_email");
   const passwordInput = document.getElementById("id_password");
-  const errorMessage = document.getElementById("messageerror");
+  const errorMessage = document.getElementById("message_error");
 
   // Ajoutez un gestionnaire d'événements pour la soumission du formulaire de connexion
   loginForm.addEventListener("submit", function (event) {
