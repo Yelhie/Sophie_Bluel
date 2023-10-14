@@ -232,10 +232,7 @@ li:hover {
 	margin-bottom: 1em;
 }
 
-.projetsetedition{
-	display: flex;
-	justify-content: center;
-}
+
 
 .filter {
 	text-align: center;
@@ -336,30 +333,82 @@ footer nav ul {
 	margin: 2em
 }
 
-.portfolio{
+.portfolio {
 	position: relative;
 }
 
+/** CSS Edition button**/
+.editContainer {
+	display: flex;
+	justify-content: center;
+}
+
+.title-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+}
+
+.title {
+	text-align: center;
+}
+
+.editButton {
+	display: flex;
+	cursor: pointer;
+	gap: 2px;
+	position: absolute;
+	top: 10px;
+	margin-left: 290px;
+	visibility: hidden;
+}
+
 /** CSS fenêtre modale**/
-.modalContainer{
+.modalContainer {
 	width: 100%;
 	height: 100%;
-	display: flex;	
+	display: flex;
 	align-items: center;
 	justify-content: center;
-	top: 0; left: 0;
+	top: 0;
+	left: 0;
 	position: fixed;
 	visibility: hidden;
 }
 
-.modalContainer.active{
+.modalContainer.active,
+.editButton.active {
 	visibility: visible;
 }
 
-.modal{
+.modal {
 	overflow: auto;
 	width: 630px;
 	height: 630px;
-	background: rgb(187, 92, 54);
+	background: rgb(218, 218, 218);
 }
 
+.fa-solid, .fa-xmark{
+	color: #1D6154;
+	display: flex;
+	justify-content: flex-end;
+}
+
+/** CSS sous fenêtre modale 1**/
+.modalSousContainerUn{
+	background: #ffffff;
+	height: 90%;
+	align-items: center;
+	justify-content: center;
+}
+
+.addPictureButton {
+	background-color: #1D6154;
+	color: white;
+}
+
+.addPictureButton:hover {
+	background-color: white;
+	color: #1D6154;
+}

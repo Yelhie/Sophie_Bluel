@@ -1,4 +1,5 @@
-// Fonction qui gère la connexion de l'utilisateur
+//! Fonction qui gère la connexion de l'utilisateur
+
 function logIn() {
   // Sélectionnez les éléments HTML nécessaires
   const loginForm = document.querySelector("form");
@@ -59,26 +60,21 @@ function logIn() {
 // Appelez la fonction de connexion lors du chargement de la page
 logIn();
 
+//! Fonction qui gère la déconnexion de l'utilisateur
+
 function logOut() {
   const token = localStorage.getItem("token");
-  const loginButton = document.getElementById("login-nav");
 
   if (token) {
-    // L'utilisateur est connecté, affichez le bouton de déconnexion
+    // L'utilisateur est connecté
+    const loginButton = document.getElementById("login-nav");
     loginButton.textContent = "Logout";
     loginButton.addEventListener("click", function () {
       // Effacez le token du local storage
       localStorage.removeItem("token");
 
       // Redirigez l'utilisateur vers la page de connexion
-      window.location.href = "./login.html";
-    });
-  } else {
-    // L'utilisateur n'est pas connecté, affichez le bouton de connexion
-    loginButton.textContent = "Login";
-    loginButton.addEventListener("click", function () {
-      // Redirigez l'utilisateur vers la page de connexion
-      window.location.href = "./login.html";
+      window.location.href = "../pages/login.html";
     });
   }
 }
