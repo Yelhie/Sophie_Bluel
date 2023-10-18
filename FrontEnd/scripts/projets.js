@@ -1,5 +1,5 @@
 // Récupération des informations depuis l'API
-async function fetchProjets() {
+export async function fetchProjets() {
   const response = await fetch("http://localhost:5678/api/works");
   return await response.json();
 }

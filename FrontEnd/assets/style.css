@@ -232,8 +232,6 @@ li:hover {
 	margin-bottom: 1em;
 }
 
-
-
 .filter {
 	text-align: center;
 }
@@ -319,7 +317,7 @@ input[type="submit"] {
 	border-radius: 60px;
 }
 
-#messageerror {
+#message_error {
 	display: flex;
 	flex-direction: column;
 	text-align: center;
@@ -365,6 +363,14 @@ footer nav ul {
 }
 
 /** CSS fenêtre modale**/
+
+.modalOpacity.active{
+	height: 100vh;
+	width: 100%;
+	position: absolute;
+    inset: 0;
+    background-color: #0000004f;
+}
 .modalContainer {
 	width: 100%;
 	height: 100%;
@@ -383,32 +389,86 @@ footer nav ul {
 }
 
 .modal {
-	overflow: auto;
+	border: 1px solid rgb(172, 172, 172);
+	padding: 10px;
+	border-radius: 10px;
 	width: 630px;
 	height: 630px;
-	background: rgb(218, 218, 218);
+	background: white;
 }
 
 .fa-solid, .fa-xmark{
-	color: #1D6154;
+	margin: 10px 10px 0 0;
 	display: flex;
 	justify-content: flex-end;
 }
 
 /** CSS sous fenêtre modale 1**/
-.modalSousContainerUn{
+.modalSousContainer{
+	display: flex;
+	flex-direction: column;
 	background: #ffffff;
-	height: 90%;
+	height: 96%;
 	align-items: center;
-	justify-content: center;
+}
+
+.modalTitle {
+	margin: 25px;
+	font-size: 1.5rem;
+	text-align: center;
+}
+
+.miniGallery{
+	overflow: auto;
+	height: 450px;
+	width: 500px;
+	display: grid;
+	grid-template-columns: repeat(4,1fr);
+	gap: 5px;
+}
+
+.miniGallery figure img{
+	height: 150px;
+	width: auto;
+}
+
+.miniGallery figure{
+	position: relative;
+}
+.miniGallery figure a{
+	opacity: 70%;
+	padding: 3px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	background-color: black;
+	color: white;
+	border-radius: 2px;
+}
+
+.miniGallery figure a:hover{
+	opacity: 100%;
+}
+
+ hr{
+	width: 500px;
+	opacity: 50%;
 }
 
 .addPictureButton {
 	background-color: #1D6154;
 	color: white;
+	width: 300px;
+	height: 40px;
+	font-family: 'Syne';
+	font-size: 15px;
+	text-align: center;
+	border-radius: 60px;
+	margin: 10px;
 }
 
 .addPictureButton:hover {
 	background-color: white;
 	color: #1D6154;
+	border: 1.5px #1D6154 solid;
 }
