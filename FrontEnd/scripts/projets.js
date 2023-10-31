@@ -14,6 +14,10 @@ function afficherProjets(projets) {
     const imageElement = document.createElement("img");
     const titreElement = document.createElement("figcaption");
 
+    //creation d'une classe contenant l'id pour pouvoir cibler l'image
+    const classId = "figure" + projet.id;
+    projetElement.classList.add(classId);
+
     imageElement.src = projet.imageUrl;
     titreElement.innerText = projet.title;
 
@@ -58,3 +62,16 @@ boutonsFiltre.forEach(function (bouton) {
     }
   });
 });
+
+//! Fonction qui gére l'affichage du bouton "modifier" si l'utilisateur est en ligne
+function onlineUi() {
+  // On récupére le token et la div ditButton
+  const token = localStorage.getItem("token");
+  const editButton = document.querySelector(".editButton");
+  //condition, si le token utilisateur est présent appliquer la class css active
+  if (token) {
+    editButton.classList.toggle("active");
+  }
+}
+
+onlineUi();

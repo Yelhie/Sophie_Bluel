@@ -362,24 +362,18 @@ footer nav ul {
 	visibility: hidden;
 }
 
-/** CSS fenêtre modale**/
-
-.modalOpacity.active{
-	height: 100vh;
-	width: 100%;
-	position: absolute;
-    inset: 0;
-    background-color: #0000004f;
-}
+/** CSS général de fenêtre modale**/
 .modalContainer {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    position: fixed;
+    background-color: #0000006b;
 	width: 100%;
 	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	top: 0;
 	left: 0;
-	position: fixed;
 	visibility: hidden;
 }
 
@@ -395,16 +389,28 @@ footer nav ul {
 	width: 630px;
 	height: 630px;
 	background: white;
-}
 
-.fa-solid, .fa-xmark{
+}
+/** CSS contenu modal Header**/
+.modalHeader {
 	margin: 10px 10px 0 0;
 	display: flex;
 	justify-content: flex-end;
 }
 
-/** CSS sous fenêtre modale 1**/
-.modalSousContainer{
+.fa-arrow-left{
+	visibility: hidden;
+}
+
+.fa-arrow-left.active{
+	visibility: visible;
+}
+.modalHeader.active {
+	justify-content: space-between;
+}
+
+/** CSS contenu modal body**/
+.modalBody{
 	display: flex;
 	flex-direction: column;
 	background: #ffffff;
@@ -418,24 +424,29 @@ footer nav ul {
 	text-align: center;
 }
 
-.miniGallery{
+/** Css contenu modal section   **/
+.modalSectionGallery{
 	overflow: auto;
 	height: 450px;
-	width: 500px;
 	display: grid;
-	grid-template-columns: repeat(4,1fr);
+	grid-template-columns: repeat(4,1fr); 
+	align-content: start;
 	gap: 5px;
 }
 
-.miniGallery figure img{
+
+.modalSectionGallery figure img{
 	height: 150px;
-	width: auto;
+	width: 100%;
+	object-fit: cover;
 }
 
-.miniGallery figure{
+.modalSectionGallery figure{
 	position: relative;
 }
-.miniGallery figure a{
+
+/** css icone poubelle**/
+.modalSectionGallery figure a{
 	opacity: 70%;
 	padding: 3px;
 	position: absolute;
@@ -444,12 +455,69 @@ footer nav ul {
 	background-color: black;
 	color: white;
 	border-radius: 2px;
+	margin: 5px;
 }
 
-.miniGallery figure a:hover{
+.modalSectionGallery figure a:hover{
 	opacity: 100%;
 }
 
+/** contenu section modal 2**/
+.modalSectionAddImage{
+		height: 450px;
+}
+
+.modalSectionAddImage #titre, #categorie{
+	display: flex;
+	flex-direction: column;
+	width: 490px;
+	height: 50px;
+	background: #FFF;
+	box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+	margin: 20px 0;
+	border: none;
+	font-family:'Work Sans';
+	font-weight: 400;
+	font-size: 1rem;
+}
+
+.addImgContainer{
+	display: flex;
+	flex-direction: column;
+	background: #E8F1F6;
+	height: 170px;
+	align-items: center;
+	margin-bottom: 35px;
+	justify-content: space-between;
+	/* padding: 15px; */
+}
+
+.addImgContainer i{
+	padding-top: 10px;
+	font-size: 75px;
+	color: #B9C5CC;
+}
+
+.addImgContainer input{
+	background-color:#CBD6DC;
+	box-shadow:1px 1px 1px #B9C5CC inset;
+	border-radius: 25px;
+	height: 30px;
+	width: 175px;
+	padding: 5px;
+	color: #306685;
+}
+
+.addImgContainer span{	
+	color: #444444;
+	padding-bottom: 15px;
+}
+
+.addImgContainer img{	
+	height: 100%;
+}
+
+/** css sous Hr **/
  hr{
 	width: 500px;
 	opacity: 50%;
@@ -467,8 +535,30 @@ footer nav ul {
 	margin: 10px;
 }
 
-.addPictureButton:hover {
+.miniature{
+	height: 150px;
+	object-fit: cover;
+	display: none;
+}
+
+.addPictureButton:not(:disabled):hover {
 	background-color: white;
 	color: #1D6154;
 	border: 1.5px #1D6154 solid;
 }
+
+.addPictureButton:disabled{
+	background-color: grey;
+}
+
+
+.modalSection.active{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+
+
+
+
