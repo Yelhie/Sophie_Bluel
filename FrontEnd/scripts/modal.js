@@ -21,7 +21,6 @@ function createModalMiniGalerie() {
   modalContainer.innerHTML = htmlModale;
   const modal = document.querySelector(".modal");
 
-  //TODO refaire en mode bloc htlm avec les ``
   // Création des éléments de la modal
   // modal Header
   const modalHeader = document.createElement("div");
@@ -58,7 +57,6 @@ function createModalMiniGalerie() {
       deleteButton.classList.add("fa-solid", "fa-trash-can");
 
       imageElement.src = projet.imageUrl;
-      //imageElement.setAttribute("data-image-id", projet.id);
       const imageId = projet.id; //on stock l'id de l'image pour pouvoir appeler la delete
 
       projetElement.appendChild(imageElement);
@@ -145,7 +143,10 @@ function createModalMiniGalerie() {
       <div class="addImgContainer">		      
         <i class="fa-regular fa-image"></i>
         <img class="miniature" src="">
-        <input type="file" id="image-file" accept="image/png, image/jpeg">
+        <div class="divAddButton">
+          <p>+ Ajouter photo</p>
+          <input type="file" id="image-file" accept="image/png, image/jpeg">
+        </div>  
 		    <span class="legende">jpg, png : 4mo max</span>
 	    </div>      
 
@@ -164,7 +165,8 @@ function createModalMiniGalerie() {
     const imgAddPicture = document.getElementById("image-file");
     const titreAddPicture = document.getElementById("titre");
     const categorieAddPicture = document.getElementById("categorie");
-
+    const divAddButton = document.querySelector('.divAddButton');
+    
     //création des balises "option"
     //on crée une balise option vide pour avoir le champ vide à l'affichage
     const option = document.createElement("option");
@@ -188,6 +190,13 @@ function createModalMiniGalerie() {
     returnButton.addEventListener("click", function () {
       modal.remove;
       createModalMiniGalerie();
+    });
+
+    //! gestion du bouton addImage
+    // écouteur d'événements au clic sur la div qui contient l'input addImage
+    divAddButton.addEventListener('click', function() {
+    // on simule un clic sur l'élément input
+    imgAddPicture.click();
     });
 
     //!fonction vérifie les champs et réactive le bouton si tout est bien rempli
@@ -216,6 +225,7 @@ function createModalMiniGalerie() {
         console.log("src:" + imageURL);
         miniature.style.display = "block";
         iconeImage.style.display = "none";
+        divAddButton.style.display = "none";
 
         //Vérification et message d'erreur si image trop grosse
         if (imageEnMo > 4) {
