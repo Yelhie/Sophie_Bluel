@@ -492,7 +492,6 @@ footer nav ul {
 	align-items: center;
 	margin-bottom: 35px;
 	justify-content: space-between;
-	/* padding: 15px; */
 }
 
 .addImgContainer i {
@@ -522,16 +521,6 @@ footer nav ul {
 	opacity: 0%;
 }
 
-/* .addImgContainer input{
-	background-color:#CBD6DC;
-	box-shadow:1px 1px 1px #B9C5CC inset;
-	border-radius: 25px;
-	height: 30px;
-	width: 175px;
-	padding: 5px;
-	color: #306685;
-} */
-
 .addImgContainer span {
 	color: #444444;
 	padding-bottom: 15px;
@@ -539,7 +528,10 @@ footer nav ul {
 
 .addImgContainer img {
 	height: 100%;
+	max-width: 490px;
+	object-fit: contain;
 }
+
 
 /** css sous Hr **/
 hr {
