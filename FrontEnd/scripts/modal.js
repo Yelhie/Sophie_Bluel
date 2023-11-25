@@ -82,10 +82,12 @@ function createModalMiniGalerie() {
           //suppression de l'image de la mini galerie
           projetElement.remove();
 
-          //suppression de l'image de la galerie principale
+          //suppression de l'image de la galerie principale si elle est affiché
           const selecteur = ".figure" + imageId;
           const elementGaleriePrincipale = document.querySelector(selecteur);
-          elementGaleriePrincipale.remove();
+          if(elementGaleriePrincipale){
+            elementGaleriePrincipale.remove();
+          }
         } else {
           console.log("La suppression du projet a échoué.");
         }

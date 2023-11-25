@@ -65,7 +65,6 @@ boutonsFiltre.forEach(function (bouton) {
       if (bouton.categoryId === null) {
         afficherProjets(projets);
       } else {
-        console.log(projets)
         filtrerProjets(bouton.categoryId);
       }
     });
