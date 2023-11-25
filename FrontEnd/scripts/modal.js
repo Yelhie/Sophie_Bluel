@@ -265,6 +265,7 @@ function createModalMiniGalerie() {
       if (response.ok) {
         console.log("Image envoyée avec succès!");
 
+        //! Création/ajout des images dans la galerie principal
         //on récupère l'url et le titre de l'image dans la réponse
         const responseData = await response.json();
         const imageUrl = responseData.imageUrl;
