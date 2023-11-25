@@ -222,7 +222,6 @@ function createModalMiniGalerie() {
         const imageEnMo = imgAddPicture.files[0].size / 1048576;
 
         miniature.src = imageURL;
-        console.log("src:" + imageURL);
         miniature.style.display = "block";
         iconeImage.style.display = "none";
         divAddButton.style.display = "none";
@@ -275,6 +274,10 @@ function createModalMiniGalerie() {
         const newFigure = document.createElement("Figure");
         const gall = document.querySelector(".gallery");
         gall.appendChild(newFigure);
+
+        //creation d'une classe contenant l'id pour pouvoir cibler l'image
+        const classFig = "figure" + responseData.id;
+        newFigure.classList.add(classFig);
 
         let newImageHtml = `
           <img src="${imageUrl}">

@@ -16,7 +16,10 @@ function afficherProjets(projets) {
 
     //creation d'une classe contenant l'id pour pouvoir cibler l'image
     const classId = "figure" + projet.id;
-    projetElement.classList.add(classId);
+    // Ajoute la class que si elle n'est pas déjà présente
+    if (!projetElement.classList.contains(classId)) {
+      projetElement.classList.add(classId);
+    }
 
     imageElement.src = projet.imageUrl;
     titreElement.innerText = projet.title;
@@ -55,11 +58,17 @@ const boutonsFiltre = [
 boutonsFiltre.forEach(function (bouton) {
   const element = document.querySelector(bouton.id);
   element.addEventListener("click", function () {
-    if (bouton.categoryId === null) {
-      afficherProjets(projets);
-    } else {
-      filtrerProjets(bouton.categoryId);
-    }
+
+    fetchProjets().then(function (data) {
+      projets = data;
+
+      if (bouton.categoryId === null) {
+        afficherProjets(projets);
+      } else {
+        console.log(projets)
+        filtrerProjets(bouton.categoryId);
+      }
+    });
   });
 });
 
