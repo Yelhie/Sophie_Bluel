@@ -29,17 +29,13 @@ npm start
 Email: `sophie.bluel@test.tld`
 Password: `S0phie`
 
-## Stack
+## Stack Technique
 
-**Client:**
-
-- HTML
-- Css
-- JavaScript
-
-**Server**
-
-- Node.js
+| Backend | Frontend | Base de données | Documentation API et Test |
+|:-------:|:--------:|:---------------:|:-------------------------:|
+| Node.js |   HTML   |                 |                   |
+|         |   Css    |               |                     |
+|         |   JavaScript  |               |                     |
 
 ## Screenshots
 
